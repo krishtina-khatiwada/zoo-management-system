@@ -1,0 +1,15 @@
+/home/christina/zoo/console2/bin/Debug/net8.0/console2
+/home/christina/zoo/console2/bin/Debug/net8.0/console2.deps.json
+/home/christina/zoo/console2/bin/Debug/net8.0/console2.runtimeconfig.json
+/home/christina/zoo/console2/bin/Debug/net8.0/console2.dll
+/home/christina/zoo/console2/bin/Debug/net8.0/console2.pdb
+/home/christina/zoo/console2/obj/Debug/net8.0/console2.GeneratedMSBuildEditorConfig.editorconfig
+/home/christina/zoo/console2/obj/Debug/net8.0/console2.AssemblyInfoInputs.cache
+/home/christina/zoo/console2/obj/Debug/net8.0/console2.AssemblyInfo.cs
+/home/christina/zoo/console2/obj/Debug/net8.0/console2.csproj.CoreCompileInputs.cache
+/home/christina/zoo/console2/obj/Debug/net8.0/console2.sourcelink.json
+/home/christina/zoo/console2/obj/Debug/net8.0/console2.dll
+/home/christina/zoo/console2/obj/Debug/net8.0/refint/console2.dll
+/home/christina/zoo/console2/obj/Debug/net8.0/console2.pdb
+/home/christina/zoo/console2/obj/Debug/net8.0/console2.genruntimeconfig.cache
+/home/christina/zoo/console2/obj/Debug/net8.0/ref/console2.dll
