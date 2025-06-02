@@ -1,12 +1,20 @@
 ﻿public abstract class Animal
 {
-    public string Name { get; }
-    public string Species { get; }
-    public int Age { get; }
+    private string Name;
+    private string Species;
+    private int Age;
     public abstract void Makesound();
     public abstract void Eat(string foodtype);
     public abstract void Move();
-    
+    public string Getname(){
+        return Name;
+    }
+    public string GetSpecies(){
+        return Species;
+    }
+    public int GetAge(){
+        return Age;
+    }
     public Animal(string name, string species, int age)
     {
         Name = name;
@@ -97,7 +105,7 @@ class Enclosure<T> where T : Animal
     {
         foreach (var animal in animalsinenclosure)
         {
-            System.Console.WriteLine(animal.Name + animal.Species + animal.Age);
+            System.Console.WriteLine(animal.Getname(), animal.GetSpecies(), animal.GetAge());
         }
     }
     public void GetAnimalcount()
@@ -107,7 +115,7 @@ class Enclosure<T> where T : Animal
         {
             a++;
         }
-        System.Console.WriteLine("the number of animal in enclosure is" + a);
+        System.Console.WriteLine("the number of animal in enclosure is " + a);
     }
     public List<T> Getanimals()
     {
@@ -157,6 +165,7 @@ class Program
         Rabbit rabbit2 = new Rabbit("ketu", 1);
         colony.Addanimal(rabbit1);
         colony.Addanimal(rabbit2);
+        colony.GetAnimalcount();
 
         Anoconda anoconda1 = new Anoconda("nagin", 20);
         knot.Addanimal(anoconda1);
