@@ -1,31 +1,32 @@
 ﻿public abstract class Animal
 {
-    private string Name;
-    private string Species;
-    private int Age;
-    public abstract void Makesound();
+    private string _name;
+    private string _species;
+    private int _age;
+    public abstract void MakeSound();
     public abstract void Eat(string foodtype);
     public abstract void Move();
-    public string Getname(){
-        return Name;
+
+    public string GetName(){
+        return _name;
     }
     public string GetSpecies(){
-        return Species;
+        return _species;
     }
     public int GetAge(){
-        return Age;
+        return _age;
     }
     public Animal(string name, string species, int age)
     {
-        Name = name;
-        Species = species;
-        Age = age;
+        _name = name;
+        _species = species;
+        _age = age;
     }
 }
 class Lion : Animal
 {
     public Lion(string name, int age) : base(name, "lion", age) { }
-    public override void Makesound()
+    public override void MakeSound()
     {
         System.Console.WriteLine("A lion roars");
     }
@@ -42,7 +43,7 @@ class Lion : Animal
 class Eagle : Animal
 {
     public Eagle(string name, int age) : base(name, "Eagle", age) { }
-    public override void Makesound()
+    public override void MakeSound()
     {
         System.Console.WriteLine("An eagle screeches");
     }
@@ -59,13 +60,13 @@ class Eagle : Animal
 class Rabbit : Animal
 {
     public Rabbit(string name, int age) : base(name, "Rabbit", age) { }
-    public override void Makesound()
+    public override void MakeSound()
     {
         System.Console.WriteLine("A rabbit squeaks");
     }
-    public override void Eat(string foodtype)
+    public override void Eat(string foodType)
     {
-        System.Console.WriteLine("A rabbit eats " + foodtype);
+        System.Console.WriteLine("A rabbit eats " + foodType);
     }
     public override void Move()
     {
@@ -76,13 +77,13 @@ class Rabbit : Animal
 class Anoconda : Animal
 {
     public Anoconda(string name, int age) : base(name, "Anoconda", age) { }
-    public override void Makesound()
+    public override void MakeSound()
     {
         System.Console.WriteLine("An anoconda hisses");
     }
-    public override void Eat(string foodtype)
+    public override void Eat(string foodType)
     {
-        System.Console.WriteLine("An anoconda eats " + foodtype);
+        System.Console.WriteLine("An anoconda eats " + foodType);
     }
     public override void Move()
     {
@@ -92,57 +93,57 @@ class Anoconda : Animal
 }
 class Enclosure<T> where T : Animal
 {
-    private List<T> animalsinenclosure = new List<T>();
-    public void Addanimal(T animal)
+    private List<T> _animalsInEnclosure = new List<T>();
+    public void AddAnimal(T animal)
     {
-        animalsinenclosure.Add(animal);
+       _animalsInEnclosure.Add(animal);
     }
-    public void Removeanimal(T animal)
+    public void RemoveAnimal(T animal)
     {
-        animalsinenclosure.Remove(animal);
+        _animalsInEnclosure.Remove(animal);
     }
     public void DisplayAnimalDetails()
     {
-        foreach (var animal in animalsinenclosure)
+        foreach (var animal in _animalsInEnclosure)
         {
-            System.Console.WriteLine(animal.Getname(), animal.GetSpecies(), animal.GetAge());
+            System.Console.WriteLine($"Name: {animal.GetName()}, Species: {animal.GetSpecies()}, Age: {animal.GetAge()}");
         }
     }
-    public void GetAnimalcount()
+    public void GetAnimalCount()
     {
         int a = 0;
-        foreach (var animal in animalsinenclosure)
+        foreach (var animal in _animalsInEnclosure)
         {
             a++;
         }
         System.Console.WriteLine("the number of animal in enclosure is " + a);
     }
-    public List<T> Getanimals()
+    public List<T> GetAnimals()
     {
-        return animalsinenclosure;
+        return _animalsInEnclosure;
     }
 
 
 }
 class Zookeeper
 {
-    public void Feedanimalsinenclosure<T>(Enclosure<T> enclosure, string foodtype) where T : Animal
+    public void FeedAnimalsInEnclosure<T>(Enclosure<T> enclosure, string foodType) where T : Animal
     {
-        foreach (var animals in enclosure.Getanimals())
+        foreach (var animals in enclosure.GetAnimals())
         {
-            animals.Eat(foodtype);
+            animals.Eat(foodType);
         }
     }
-    public void TriggerSoundsinenclosure<T>(Enclosure<T> enclosure) where T : Animal
+    public void TriggerSoundsInEnclosure<T>(Enclosure<T> enclosure) where T : Animal
     {
-        foreach (var animals in enclosure.Getanimals())
+        foreach (var animals in enclosure.GetAnimals())
         {
-            animals.Makesound();
+            animals.MakeSound();
         }
     }
-    public void ObserveMotionsinEnclosure<T>(Enclosure<T> enclosure) where T : Animal
+    public void ObserveMotionsInEnclosure<T>(Enclosure<T> enclosure) where T : Animal
     {
-        foreach (var animals in enclosure.Getanimals())
+        foreach (var animals in enclosure.GetAnimals())
         {
             animals.Move();
         }
@@ -152,35 +153,35 @@ class Program
 {
     static void Main()
     {
-        Enclosure<Lion> lionenclosure = new Enclosure<Lion>();
-        Enclosure<Eagle> aviary = new Enclosure<Eagle>();
-        Enclosure<Rabbit> colony = new Enclosure<Rabbit>();
-        Enclosure<Anoconda> knot = new Enclosure<Anoconda>();
+        Enclosure<Lion> _lionEnclosure = new Enclosure<Lion>();
+        Enclosure<Eagle> _aviary = new Enclosure<Eagle>();
+        Enclosure<Rabbit> _colony = new Enclosure<Rabbit>();
+        Enclosure<Anoconda> _knot = new Enclosure<Anoconda>();
         Eagle eagle1 = new Eagle("harry", 2);
         Eagle eagle2 = new Eagle("sam", 1);
-        aviary.Addanimal(eagle1);
-        aviary.Addanimal(eagle2);
+        _aviary.AddAnimal(eagle1);
+        _aviary.AddAnimal(eagle2);
 
         Rabbit rabbit1 = new Rabbit("rahul", 1);
         Rabbit rabbit2 = new Rabbit("ketu", 1);
-        colony.Addanimal(rabbit1);
-        colony.Addanimal(rabbit2);
-        colony.GetAnimalcount();
+        _colony.AddAnimal(rabbit1);
+        _colony.AddAnimal(rabbit2);
+        _colony.GetAnimalCount();
 
         Anoconda anoconda1 = new Anoconda("nagin", 20);
-        knot.Addanimal(anoconda1);
+        _knot.AddAnimal(anoconda1);
 
         Lion lion = new Lion("simbha", 20);
         Lion lion2 = new Lion("simbha", 22);
         Lion lion3 = new Lion("simbha", 23);
-        lionenclosure.Addanimal(lion);
-        lionenclosure.Addanimal(lion2);
-        lionenclosure.Addanimal(lion3);
+        _lionEnclosure.AddAnimal(lion);
+        _lionEnclosure.AddAnimal(lion2);
+        _lionEnclosure.AddAnimal(lion3);
 
         Zookeeper zookeeper = new Zookeeper();
-        zookeeper.ObserveMotionsinEnclosure(aviary);
-        zookeeper.TriggerSoundsinenclosure(colony);
-        zookeeper.Feedanimalsinenclosure(lionenclosure, "grass");
+        zookeeper.ObserveMotionsInEnclosure(_aviary);
+        zookeeper.TriggerSoundsInEnclosure(_colony);
+        zookeeper.FeedAnimalsInEnclosure(_lionEnclosure, "grass");
         
 
     }
