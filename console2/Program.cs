@@ -25,7 +25,15 @@
 }
 class Lion : Animal
 {
-    public Lion(string name, int age) : base(name, "lion", age) { }
+    private string _maneColor;
+    public string GetManeColor()
+    {
+        return _maneColor;
+    }
+    public Lion(string name, int age, string manecolor) : base(name, "lion", age)
+    {
+        _maneColor = manecolor;
+    }
     public override void MakeSound()
     {
         System.Console.WriteLine("A lion roars");
@@ -49,11 +57,15 @@ class Eagle : Animal
     }
     public override void Eat(string foodtype)
     {
-        System.Console.WriteLine("An eagle eats "+ foodtype);
+        System.Console.WriteLine("An eagle eats " + foodtype);
     }
     public override void Move()
     {
         System.Console.WriteLine("An eagle flies");
+    }
+    public void Flyhigh()
+    {
+        System.Console.WriteLine("The eagle is flying high");
     }
 
 }
@@ -122,7 +134,13 @@ class Enclosure<T> where T : Animal
     {
         return _animalsInEnclosure;
     }
-
+    public void PerformRoutineCheckup()
+    {
+        foreach (var animal in _animalsInEnclosure)
+        {
+            System.Console.WriteLine($"performing checkup on {animal.GetName()} the {animal.GetSpecies()}");
+        }
+    }
 
 }
 class Zookeeper
@@ -148,6 +166,7 @@ class Zookeeper
             animals.Move();
         }
     }
+    
 }
 class Program
 {
@@ -161,6 +180,7 @@ class Program
         Eagle eagle2 = new Eagle("sam", 1);
         _aviary.AddAnimal(eagle1);
         _aviary.AddAnimal(eagle2);
+        _aviary.PerformRoutineCheckup();
 
         Rabbit rabbit1 = new Rabbit("rahul", 1);
         Rabbit rabbit2 = new Rabbit("ketu", 1);
@@ -171,9 +191,9 @@ class Program
         Anoconda anoconda1 = new Anoconda("nagin", 20);
         _knot.AddAnimal(anoconda1);
 
-        Lion lion = new Lion("simbha", 20);
-        Lion lion2 = new Lion("simbha", 22);
-        Lion lion3 = new Lion("simbha", 23);
+        Lion lion = new Lion("simbha", 20, "brown");
+        Lion lion2 = new Lion("simbha", 22, "dark grey");
+        Lion lion3 = new Lion("simbha", 23, "dark borwn");
         _lionEnclosure.AddAnimal(lion);
         _lionEnclosure.AddAnimal(lion2);
         _lionEnclosure.AddAnimal(lion3);
